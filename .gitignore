@@ -1,0 +1,7 @@
+
+# DIRECTORY
+vendor/
+.idea/
+
+# FILES
+*.docx
