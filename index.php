@@ -35,4 +35,6 @@ $section->addText("Для добавления текста, в будущий �
 
 $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
 $objWriter->save('doc.docx');
-    echo "<div> <a href='/doc.docx'>download</a> </div>";
+
+
+require './view/home.php';
