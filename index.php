@@ -19,7 +19,6 @@ $property->setSubject('My subject');
 $property->setKeywords('my, key, word');
 
 $sectionStyle = array(
-
     'orientation' => 'portrait',
     'marginTop' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(2),
     'marginLeft' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(1.5),
@@ -28,7 +27,6 @@ $sectionStyle = array(
     'pageNumberingStart' => 1,
     'borderBottomSize'=>100,
     'borderBottomColor'=>'C0C0C0'
-
 );
 $section = $phpWord->addSection($sectionStyle);
 $section->addText("Для добавления текста, в будущий документ, необходимо использовать метод addText(). В качестве параметров, при вызове данного метода, необходимо передать следующее:");
