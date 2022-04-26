@@ -1,9 +1,9 @@
 export default {
-    props: ['element'],
+    props: ['element', 'methodDeleteElement'],
     template: `
         <div :data-id="this.element.id" class="document-element">
             <div class="control">
-                <button>Удалить</button>
+                <button @click="this.methodDeleteElement(this.element.id)">Удалить</button>
                 <button>Изменить</button>
             </div>
             <div v-if="this.element.type === 'TEXT'">

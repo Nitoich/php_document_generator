@@ -1,13 +1,13 @@
 import DocumentElement from "./components/documentElement.js";
 
 export default {
-    props: ['elements'],
+    props: ['elements', 'methodDeleteElement'],
     components: {
         DocumentElement
     },
     template: `
         <div id="main">
-            <DocumentElement v-for="element in this.elements" :element="element" />
+            <DocumentElement v-for="element in this.elements" :element="element" :methodDeleteElement="methodDeleteElement"/>
         </div>
     `
 }
