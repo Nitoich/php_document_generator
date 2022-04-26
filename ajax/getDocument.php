@@ -29,15 +29,24 @@ $property->setKeywords('my, key, word');
 $textStyle = array(
     'orientation' => 'portrait',
     'marginTop' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(2),
-    'marginLeft' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(2),
-    'marginRight' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(0.5),
+    'marginLeft' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(3),
+    'marginRight' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(1.5),
+    'marginBottom' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(2),
     'colsNum' => 1,
     'pageNumberingStart' => 1,
-    'borderBottomSize'=>100,
-    'borderBottomColor'=>'C0C0C0'
+    'borderBottomSize'=>10,
+    'borderTopSize' => 10,
+    'borderRightSize' => 10,
+    'borderLeftSize' => 10,
+    'borderBottomColor'=>'000000',
+    'borderTopColor'=>'000000',
+    'borderRightColor'=>'000000',
+    'borderLeftColor'=>'000000',
 );
 
 $newSection = $phpWord->addSection($textStyle);
+//$footer = $newSection->addFooter();
+// $footer->addTable();
 foreach ($body as $item) {
     switch($item->type) {
         case 'TITLE':
