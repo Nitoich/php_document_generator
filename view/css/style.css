@@ -22,10 +22,35 @@ body {
     box-shadow: 5px 0 10px 0 #000;
     padding: 10px;
     min-width: 284px;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#aside button,
+#aside select,
+#aside input{
+    width: 100%;
+    padding: 10px;
+}
+
+textarea {
+    max-width: 100%;
+    min-width: 100%;
+    max-height: 400px;
+    min-height: 400px;
+}
+
+.aside-block {
+    flex: 1;
+}
+
+.aside-block.add-element-to-main > * {
+    margin: 10px 0;
 }
 
 #main {
     padding: 15px;
+    padding-top: 50px;
     overflow: auto;
     display: flex;
     flex-flow: column nowrap;
@@ -34,4 +59,11 @@ body {
 
 h1.title {
     text-align: center;
+}
+
+.document-element {
+    font-family: 'Times New Roman';
+    font-size: 14px;
+    padding: 4px 75px;
+    overflow-wrap: break-word;
 }

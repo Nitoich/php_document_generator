@@ -11,9 +11,6 @@
         <script type="module" src="./view/js/vue/root.js"></script>
     </head>
     <body>
-        <div id="root">
-            <Aside />
-            <Main />
-        </div>
+        <div id="root"></div>
     </body>
 </html>
