@@ -36,16 +36,18 @@ const App = {
         },
         deleteElement(id) {
             console.log(id);
+            console.log(this.getIndexElement(id))
             this.Elements.splice(this.getIndexElement(id), 1);
             this.saveToLocalStorage();
         },
         getIndexElement(id) {
-            for(let i = 0; i < this.Elements.length - 1; i++) {
+            let find;
+            for(let i = 0; i < this.Elements.length; i++) {
                 if(this.Elements[i].id == id) {
-                    return i;
+                    find = i;
                 }
             }
-            return false;
+            return find;
         },
         getNewId() {
             if (this.Elements.length != 0) {

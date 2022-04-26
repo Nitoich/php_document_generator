@@ -26,10 +26,10 @@ $property->setModified(mktime(0, 0, 0, 3, 14, 2015));
 $property->setSubject('My subject');
 $property->setKeywords('my, key, word');
 
-$sectionStyle = array(
+$textStyle = array(
     'orientation' => 'portrait',
     'marginTop' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(2),
-    'marginLeft' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(1.5),
+    'marginLeft' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(2),
     'marginRight' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(0.5),
     'colsNum' => 1,
     'pageNumberingStart' => 1,
@@ -37,10 +37,16 @@ $sectionStyle = array(
     'borderBottomColor'=>'C0C0C0'
 );
 
-$docSections = [];
-$newSection = $phpWord->addSection($sectionStyle);
+$newSection = $phpWord->addSection($textStyle);
 foreach ($body as $item) {
-    $newSection->addText($item->content);
+    switch($item->type) {
+        case 'TITLE':
+            $newSection->addText($item->content,array('bold' => TRUE, 'size' => 16), array('align' => 'center'));
+            break;
+        case 'TEXT':
+            $newSection->addText($item->content,[],['align' => 'justified']);
+            break;
+    }
 }
 
 $objWriter = \PhpOffice\PhpWord\IOFactory::createWriter($phpWord, 'Word2007');
