@@ -7,7 +7,7 @@ export default {
     },
     template: `
         <div id="main">
-            <DocumentElement v-for="element in this.elements" :type="element.type" :content="element.content" />
+            <DocumentElement v-for="element in this.elements" :element="element" />
         </div>
     `
 }

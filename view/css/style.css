@@ -11,7 +11,7 @@ body {
 
 #root {
     display: grid;
-    grid-template-columns: 20% 1fr;
+    grid-template-columns: 1fr 3fr;
     height: inherit;
 }
 
@@ -66,4 +66,34 @@ h1.title {
     font-size: 14px;
     padding: 4px 75px;
     overflow-wrap: break-word;
+    width: 100%;
+    position: relative;
+}
+
+.document-element .control {
+    position: absolute;
+    right: 0;
+    height: max-content;
+    width: max-content;
+    top: -30px;
+    background: rgba(127,127,127,0.7);
+    opacity: 0;
+    display: flex;
+}
+
+.document-element .control > button {
+    width: 100%;
+    padding: 4px;
+}
+
+.document-element .control > * {
+    margin: 5px;
+}
+
+.document-element:hover .control {
+    opacity: 1;
+}
+
+.document-element:hover {
+    border: 1px solid rgb(127,127,127);
 }

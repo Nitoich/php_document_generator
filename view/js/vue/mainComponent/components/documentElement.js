@@ -1,12 +1,16 @@
 export default {
-    props: ['type', 'content'],
+    props: ['element'],
     template: `
-        <div style="width: 100%" class="document-element">
-            <div v-if="this.type === 'TEXT'">
-                {{ this.content }}
+        <div :data-id="this.element.id" class="document-element">
+            <div class="control">
+                <button>Удалить</button>
+                <button>Изменить</button>
             </div>
-            <div v-if="this.type === 'TITLE'" style="text-align: center; font-size: 18px; font-weight: bold; ">
-                {{ this.content }}
+            <div v-if="this.element.type === 'TEXT'">
+                {{ this.element.content }}
+            </div>
+            <div v-if="this.element.type === 'TITLE'" style="text-align: center; font-size: 18px; font-weight: bold; ">
+                {{ this.element.content }}
             </div>
         </div>
     `
