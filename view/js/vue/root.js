@@ -32,7 +32,7 @@ const App = {
         }
     },
     template: `
-        <Aside :methodAddElement="addElement"/>
+        <Aside :methodAddElement="addElement" :elements="this.Elements" />
         <Main :elements="this.Elements" />
     `
 }
