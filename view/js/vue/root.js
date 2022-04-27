@@ -25,6 +25,20 @@ const App = {
             localStorage.setItem('SAVE_ELEMENTS', JSON.stringify(this.Elements));
         },
         addElement(type, content) {
+            if(type === 'IMAGE') {
+                fetch('/ajax/addImage.php', {
+                    method: 'post',
+                    headers: {
+                        "Content-Type": "multipart/form-data"
+                    },
+                    body: content
+                })
+                    .then(res => {return res.json()})
+                    .then(res => {
+                        content = res.url;
+                    })
+            }
+
             if(content != '') {
                 this.Elements.push({
                     id: this.getNewId(),

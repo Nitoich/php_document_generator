@@ -8,6 +8,9 @@ export default {
     template: `
         <div id="main">
             <DocumentElement v-for="element in this.elements" :element="element" :methodDeleteElement="methodDeleteElement"/>
+            <div class="document-element add-new-element">
+                <span></span>
+            </div>
         </div>
     `
 }

@@ -45,8 +45,25 @@ $textStyle = array(
 );
 
 $newSection = $phpWord->addSection($textStyle);
-//$footer = $newSection->addFooter();
-// $footer->addTable();
+
+$tableStyle = [
+    'borderColor' => '000000',
+    'borderSize' => 10,
+    'cellMargin' => 50,
+    'marginLeft' => \PhpOffice\PhpWord\Shared\Converter::cmToTwip(1)
+];
+
+$phpWord->addTableStyle('footerTable', $tableStyle, ['bgColor' => 'ffffff']);
+
+$footer = $newSection->addFooter();
+$footerTable = $footer->addTable('footerTable');
+$row = $footerTable->addRow(100);
+$row->addCell(200)->addText('1');
+$row->addCell(200)->addText('2');
+$row->addCell(200)->addText('3');
+
+
+
 foreach ($body as $item) {
     switch($item->type) {
         case 'TITLE':

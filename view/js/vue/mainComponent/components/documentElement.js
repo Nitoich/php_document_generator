@@ -12,6 +12,9 @@ export default {
             <div v-if="this.element.type === 'TITLE'" style="text-align: center; font-size: 18px; font-weight: bold; ">
                 {{ this.element.content }}
             </div>
+            <div v-if="this.element.type === 'IMAGE'" style="text-align: center; font-size: 18px; font-weight: bold; ">
+                <img :src="this.element.content" :alt="this.element.type">
+            </div>
         </div>
     `
 }
