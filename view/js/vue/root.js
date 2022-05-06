@@ -25,28 +25,37 @@ const App = {
             localStorage.setItem('SAVE_ELEMENTS', JSON.stringify(this.Elements));
         },
         addElement(type, content) {
+            let gcontent = content;
             if(type === 'IMAGE') {
+                const formData = new FormData();
+                formData.append('image', document.getElementById('file-transfer').files[0], document.getElementById('file-transfer').files[0].name);
                 fetch('/ajax/addImage.php', {
                     method: 'post',
-                    headers: {
-                        "Content-Type": "multipart/form-data"
-                    },
-                    body: content
+                    body: formData
                 })
                     .then(res => {return res.json()})
                     .then(res => {
-                        content = res.url;
+                        this.Elements.push({
+                            id: this.getNewId(),
+                            type: type,
+                            content: {
+                                image: res.url,
+                                text: gcontent.text
+                            }
+                        });
+                        this.saveToLocalStorage();
                     })
+            } else {
+                if(content != '') {
+                    this.Elements.push({
+                        id: this.getNewId(),
+                        type: type,
+                        content: content
+                    });
+                    this.saveToLocalStorage();
+                }
             }
 
-            if(content != '') {
-                this.Elements.push({
-                    id: this.getNewId(),
-                    type: type,
-                    content: content
-                });
-                this.saveToLocalStorage();
-            }
         },
         deleteElement(id) {
             console.log(id);

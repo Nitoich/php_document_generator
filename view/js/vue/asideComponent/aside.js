@@ -20,9 +20,9 @@ export default {
                     window.open(res.url);
                 })
         },
-        addElement() {
+        addElement(event) {
             if (this.typeBlock === 'IMAGE') {
-                this.methodAddElement(this.typeBlock, this.image);
+                this.methodAddElement(this.typeBlock, {image: this.image, text: this.content});
                 console.log(this.image)
             } else {
                 this.methodAddElement(this.typeBlock, this.content)
@@ -46,10 +46,10 @@ export default {
             </div>
             
             <div v-if="this.typeBlock === 'IMAGE'">
-                <input type="file" v-model="this.image">
-                <input type="text" placeholder="Название фото">
+                <input type="file" id="file-transfer">
+                <input type="text" placeholder="Название фото" v-model="this.content">
             </div>
-            <button @click="this.addElement()">AddBlockButton</button>
+            <button @click="this.addElement($event)">AddBlockButton</button>
         </div>
         <button @click="this.generate()">GENERATE</button>
     </div>`

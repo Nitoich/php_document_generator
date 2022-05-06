@@ -1,5 +1,9 @@
 <?php
 
+if($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header('Location: /');
+}
+
 require "../vendor/autoload.php";
 
 function randomstr($length = 16) {
@@ -62,7 +66,7 @@ $row->addCell(200)->addText('1');
 $row->addCell(200)->addText('2');
 $row->addCell(200)->addText('3');
 
-
+$imageCounter = 0;
 
 foreach ($body as $item) {
     switch($item->type) {
@@ -71,6 +75,11 @@ foreach ($body as $item) {
             break;
         case 'TEXT':
             $newSection->addText($item->content,[],['align' => 'justified']);
+            break;
+        case 'IMAGE':
+            $imageCounter++;
+            $newSection->addImage('..' . $item->content->image, ['width' => 450, 'align' => 'left']);
+            $newSection->addText('Рисунок ' . $imageCounter . ' - ' . $item->content->text, [], ['align' => 'left']);
             break;
     }
 }
